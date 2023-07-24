@@ -9,7 +9,7 @@ import org.springframework.web.reactive.function.client.WebClient
 class WebClientConfig(private val seaTableConfig: SeaTableConfig) {
 
     @Bean
-    fun seaTableApiClient(): WebClient {
+    fun seaTableApiClientBean(): WebClient {
         return WebClient.builder()
             .baseUrl(seaTableConfig.dtableDb)
             .defaultHeader("Authorization", "Token ${seaTableConfig.accessToken}")

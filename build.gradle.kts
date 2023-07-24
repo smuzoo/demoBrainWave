@@ -25,6 +25,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	annotationProcessor ("org.springframework.boot:spring-boot-configuration-processor")
+	implementation("com.squareup.okhttp3:okhttp:4.9.2")
 }
 
 tasks.withType<KotlinCompile> {

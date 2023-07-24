@@ -2,18 +2,22 @@ package com.example.demo.controller
 
 import com.example.demo.model.Note
 import com.example.demo.service.NoteService
+import com.example.demo.seatable.SeaTableApiClient
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/notes")
-class NoteController(private val noteService: NoteService) {
+class NoteController(
+    private val noteService: NoteService,
+    private val seaTableApiClient: SeaTableApiClient // Внедрите SeaTableApiClient
+) {
 
-    @GetMapping
-    fun getAllNotes(): ResponseEntity<List<Note>> {
-        val notes = noteService.getAllNotes()
-        return ResponseEntity.ok(notes)
+    @GetMapping("/get-token")
+    fun getAppAccessToken(): String {
+        val appAccessToken = seaTableApiClient.getAppAccessToken()
+        return "App Access Token: $appAccessToken"
     }
 
     @GetMapping("/{id}")
